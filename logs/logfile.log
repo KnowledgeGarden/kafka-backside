@@ -1,0 +1,326 @@
+INFO  2017-04-02 17:32:16,231 [main] - ProducerConfig values: 
+	acks = 1
+	batch.size = 16384
+	block.on.buffer.full = false
+	bootstrap.servers = [localhost:9092]
+	buffer.memory = 33554432
+	client.id = 
+	compression.type = none
+	connections.max.idle.ms = 540000
+	interceptor.classes = null
+	key.serializer = class org.apache.kafka.common.serialization.StringSerializer
+	linger.ms = 0
+	max.block.ms = 60000
+	max.in.flight.requests.per.connection = 5
+	max.request.size = 1048576
+	metadata.fetch.timeout.ms = 60000
+	metadata.max.age.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.sample.window.ms = 30000
+	partitioner.class = class org.apache.kafka.clients.producer.internals.DefaultPartitioner
+	receive.buffer.bytes = 32768
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retries = 0
+	retry.backoff.ms = 100
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.mechanism = GSSAPI
+	security.protocol = PLAINTEXT
+	send.buffer.bytes = 131072
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.1, TLSv1]
+	ssl.endpoint.identification.algorithm = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLS
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	timeout.ms = 30000
+	value.serializer = class org.apache.kafka.common.serialization.StringSerializer
+
+DEBUG 2017-04-02 17:32:16,350 [main] - Added sensor with name bufferpool-wait-time
+DEBUG 2017-04-02 17:32:16,354 [main] - Added sensor with name buffer-exhausted-records
+DEBUG 2017-04-02 17:32:16,365 [main] - Updated cluster metadata version 1 to Cluster(id = null, nodes = [localhost:9092 (id: -1 rack: null)], partitions = [])
+DEBUG 2017-04-02 17:32:16,383 [main] - Added sensor with name connections-closed:
+DEBUG 2017-04-02 17:32:16,383 [main] - Added sensor with name connections-created:
+DEBUG 2017-04-02 17:32:16,383 [main] - Added sensor with name bytes-sent-received:
+DEBUG 2017-04-02 17:32:16,383 [main] - Added sensor with name bytes-sent:
+DEBUG 2017-04-02 17:32:16,385 [main] - Added sensor with name bytes-received:
+DEBUG 2017-04-02 17:32:16,385 [main] - Added sensor with name select-time:
+DEBUG 2017-04-02 17:32:16,386 [main] - Added sensor with name io-time:
+DEBUG 2017-04-02 17:32:16,392 [main] - Added sensor with name batch-size
+DEBUG 2017-04-02 17:32:16,392 [main] - Added sensor with name compression-rate
+DEBUG 2017-04-02 17:32:16,393 [main] - Added sensor with name queue-time
+DEBUG 2017-04-02 17:32:16,393 [main] - Added sensor with name request-time
+DEBUG 2017-04-02 17:32:16,393 [main] - Added sensor with name produce-throttle-time
+DEBUG 2017-04-02 17:32:16,394 [main] - Added sensor with name records-per-request
+DEBUG 2017-04-02 17:32:16,395 [main] - Added sensor with name record-retries
+DEBUG 2017-04-02 17:32:16,395 [main] - Added sensor with name errors
+DEBUG 2017-04-02 17:32:16,395 [main] - Added sensor with name record-size-max
+DEBUG 2017-04-02 17:32:16,401 [kafka-producer-network-thread | producer-1] - Starting Kafka producer I/O thread.
+INFO  2017-04-02 17:32:16,404 [main] - Kafka version : 0.10.2.0
+INFO  2017-04-02 17:32:16,404 [main] - Kafka commitId : 576d93a8dc0cf421
+DEBUG 2017-04-02 17:32:16,405 [main] - Kafka producer started
+INFO  2017-04-02 17:32:16,488 [main] - ConsumerConfig values: 
+	auto.commit.interval.ms = 1000
+	auto.offset.reset = latest
+	bootstrap.servers = [localhost:9092]
+	check.crcs = true
+	client.id = 
+	connections.max.idle.ms = 540000
+	enable.auto.commit = true
+	exclude.internal.topics = true
+	fetch.max.bytes = 52428800
+	fetch.max.wait.ms = 500
+	fetch.min.bytes = 1
+	group.id = ChatRoom
+	heartbeat.interval.ms = 3000
+	interceptor.classes = null
+	key.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+	max.partition.fetch.bytes = 1048576
+	max.poll.interval.ms = 300000
+	max.poll.records = 500
+	metadata.max.age.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	partition.assignment.strategy = [class org.apache.kafka.clients.consumer.RangeAssignor]
+	receive.buffer.bytes = 65536
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 305000
+	retry.backoff.ms = 100
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.mechanism = GSSAPI
+	security.protocol = PLAINTEXT
+	send.buffer.bytes = 131072
+	session.timeout.ms = 30000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.1, TLSv1]
+	ssl.endpoint.identification.algorithm = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLS
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	value.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+
+DEBUG 2017-04-02 17:32:16,488 [main] - Starting the Kafka consumer
+INFO  2017-04-02 17:32:16,489 [main] - ConsumerConfig values: 
+	auto.commit.interval.ms = 1000
+	auto.offset.reset = latest
+	bootstrap.servers = [localhost:9092]
+	check.crcs = true
+	client.id = consumer-1
+	connections.max.idle.ms = 540000
+	enable.auto.commit = true
+	exclude.internal.topics = true
+	fetch.max.bytes = 52428800
+	fetch.max.wait.ms = 500
+	fetch.min.bytes = 1
+	group.id = ChatRoom
+	heartbeat.interval.ms = 3000
+	interceptor.classes = null
+	key.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+	max.partition.fetch.bytes = 1048576
+	max.poll.interval.ms = 300000
+	max.poll.records = 500
+	metadata.max.age.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	partition.assignment.strategy = [class org.apache.kafka.clients.consumer.RangeAssignor]
+	receive.buffer.bytes = 65536
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 305000
+	retry.backoff.ms = 100
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.mechanism = GSSAPI
+	security.protocol = PLAINTEXT
+	send.buffer.bytes = 131072
+	session.timeout.ms = 30000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.1, TLSv1]
+	ssl.endpoint.identification.algorithm = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLS
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	value.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+
+DEBUG 2017-04-02 17:32:16,497 [main] - Updated cluster metadata version 1 to Cluster(id = null, nodes = [localhost:9092 (id: -1 rack: null)], partitions = [])
+DEBUG 2017-04-02 17:32:16,497 [main] - Added sensor with name connections-closed:
+DEBUG 2017-04-02 17:32:16,497 [main] - Added sensor with name connections-created:
+DEBUG 2017-04-02 17:32:16,499 [main] - Added sensor with name bytes-sent-received:
+DEBUG 2017-04-02 17:32:16,499 [main] - Added sensor with name bytes-sent:
+DEBUG 2017-04-02 17:32:16,499 [main] - Added sensor with name bytes-received:
+DEBUG 2017-04-02 17:32:16,500 [main] - Added sensor with name select-time:
+DEBUG 2017-04-02 17:32:16,500 [main] - Added sensor with name io-time:
+DEBUG 2017-04-02 17:32:16,523 [main] - Added sensor with name heartbeat-latency
+DEBUG 2017-04-02 17:32:16,524 [main] - Added sensor with name join-latency
+DEBUG 2017-04-02 17:32:16,524 [main] - Added sensor with name sync-latency
+DEBUG 2017-04-02 17:32:16,526 [main] - Added sensor with name commit-latency
+DEBUG 2017-04-02 17:32:16,536 [main] - Added sensor with name bytes-fetched
+DEBUG 2017-04-02 17:32:16,536 [main] - Added sensor with name records-fetched
+DEBUG 2017-04-02 17:32:16,537 [main] - Added sensor with name fetch-latency
+DEBUG 2017-04-02 17:32:16,537 [main] - Added sensor with name records-lag
+DEBUG 2017-04-02 17:32:16,537 [main] - Added sensor with name fetch-throttle-time
+INFO  2017-04-02 17:32:16,537 [main] - Kafka version : 0.10.2.0
+INFO  2017-04-02 17:32:16,537 [main] - Kafka commitId : 576d93a8dc0cf421
+DEBUG 2017-04-02 17:32:16,537 [main] - Kafka consumer created
+DEBUG 2017-04-02 17:32:16,538 [main] - Subscribed to topic(s): ChatRoom
+DEBUG 2017-04-02 17:32:16,543 [main] - ChatAppSendMessage Testing
+DEBUG 2017-04-02 17:32:16,544 [ChatRoom] - ProducerSend ProducerRecord(topic=ChatRoom, partition=null, key=ChatRoom, value=Testing, timestamp=null)
+DEBUG 2017-04-02 17:32:16,546 [kafka-producer-network-thread | producer-1] - Initialize connection to node -1 for sending metadata request
+DEBUG 2017-04-02 17:32:16,546 [kafka-producer-network-thread | producer-1] - Initiating connection to node -1 at localhost:9092.
+INFO  2017-04-02 17:32:16,596 [ChatRoom] - [ChatRoom], Starting 
+DEBUG 2017-04-02 17:32:16,596 [ChatRoom] - Sending GroupCoordinator request for group ChatRoom to broker localhost:9092 (id: -1 rack: null)
+DEBUG 2017-04-02 17:32:16,610 [kafka-producer-network-thread | producer-1] - Added sensor with name node--1.bytes-sent
+DEBUG 2017-04-02 17:32:16,611 [kafka-producer-network-thread | producer-1] - Added sensor with name node--1.bytes-received
+DEBUG 2017-04-02 17:32:16,611 [kafka-producer-network-thread | producer-1] - Added sensor with name node--1.latency
+DEBUG 2017-04-02 17:32:16,614 [kafka-producer-network-thread | producer-1] - Created socket with SO_RCVBUF = 326640, SO_SNDBUF = 146988, SO_TIMEOUT = 0 to node -1
+DEBUG 2017-04-02 17:32:16,614 [kafka-producer-network-thread | producer-1] - Completed connection to node -1.  Fetching API versions.
+DEBUG 2017-04-02 17:32:16,614 [kafka-producer-network-thread | producer-1] - Initiating API versions fetch from node -1.
+DEBUG 2017-04-02 17:32:16,620 [ChatRoom] - Initiating connection to node -1 at localhost:9092.
+DEBUG 2017-04-02 17:32:16,620 [ChatRoom] - Added sensor with name node--1.bytes-sent
+DEBUG 2017-04-02 17:32:16,621 [ChatRoom] - Added sensor with name node--1.bytes-received
+DEBUG 2017-04-02 17:32:16,621 [ChatRoom] - Added sensor with name node--1.latency
+DEBUG 2017-04-02 17:32:16,621 [ChatRoom] - Created socket with SO_RCVBUF = 342972, SO_SNDBUF = 146988, SO_TIMEOUT = 0 to node -1
+DEBUG 2017-04-02 17:32:16,621 [ChatRoom] - Completed connection to node -1.  Fetching API versions.
+DEBUG 2017-04-02 17:32:16,622 [ChatRoom] - Initiating API versions fetch from node -1.
+DEBUG 2017-04-02 17:32:16,653 [ChatRoom] - Recorded API versions for node -1: (Produce(0): 0 to 2 [usable: 2], Fetch(1): 0 to 3 [usable: 3], Offsets(2): 0 to 1 [usable: 1], Metadata(3): 0 to 2 [usable: 2], LeaderAndIsr(4): 0 [usable: 0], StopReplica(5): 0 [usable: 0], UpdateMetadata(6): 0 to 3 [usable: 3], ControlledShutdown(7): 1 [usable: 1], OffsetCommit(8): 0 to 2 [usable: 2], OffsetFetch(9): 0 to 2 [usable: 2], GroupCoordinator(10): 0 [usable: 0], JoinGroup(11): 0 to 1 [usable: 1], Heartbeat(12): 0 [usable: 0], LeaveGroup(13): 0 [usable: 0], SyncGroup(14): 0 [usable: 0], DescribeGroups(15): 0 [usable: 0], ListGroups(16): 0 [usable: 0], SaslHandshake(17): 0 [usable: 0], ApiVersions(18): 0 [usable: 0], CreateTopics(19): 0 to 1 [usable: 1], DeleteTopics(20): 0 [usable: 0])
+DEBUG 2017-04-02 17:32:16,653 [kafka-producer-network-thread | producer-1] - Recorded API versions for node -1: (Produce(0): 0 to 2 [usable: 2], Fetch(1): 0 to 3 [usable: 3], Offsets(2): 0 to 1 [usable: 1], Metadata(3): 0 to 2 [usable: 2], LeaderAndIsr(4): 0 [usable: 0], StopReplica(5): 0 [usable: 0], UpdateMetadata(6): 0 to 3 [usable: 3], ControlledShutdown(7): 1 [usable: 1], OffsetCommit(8): 0 to 2 [usable: 2], OffsetFetch(9): 0 to 2 [usable: 2], GroupCoordinator(10): 0 [usable: 0], JoinGroup(11): 0 to 1 [usable: 1], Heartbeat(12): 0 [usable: 0], LeaveGroup(13): 0 [usable: 0], SyncGroup(14): 0 [usable: 0], DescribeGroups(15): 0 [usable: 0], ListGroups(16): 0 [usable: 0], SaslHandshake(17): 0 [usable: 0], ApiVersions(18): 0 [usable: 0], CreateTopics(19): 0 to 1 [usable: 1], DeleteTopics(20): 0 [usable: 0])
+DEBUG 2017-04-02 17:32:16,653 [ChatRoom] - Sending metadata request (type=MetadataRequest, topics=ChatRoom) to node -1
+DEBUG 2017-04-02 17:32:16,653 [kafka-producer-network-thread | producer-1] - Sending metadata request (type=MetadataRequest, topics=ChatRoom) to node -1
+DEBUG 2017-04-02 17:32:16,658 [ChatRoom] - Updated cluster metadata version 2 to Cluster(id = 2Jyz7hyPQzuyowWezK0xGQ, nodes = [192.168.1.120:9092 (id: 0 rack: null)], partitions = [Partition(topic = ChatRoom, partition = 0, leader = 0, replicas = [0], isr = [0])])
+DEBUG 2017-04-02 17:32:16,659 [ChatRoom] - Received GroupCoordinator response ClientResponse(receivedTimeMs=1491179536658, latencyMs=44, disconnected=false, requestHeader={api_key=10,api_version=0,correlation_id=0,client_id=consumer-1}, responseBody={error_code=0,coordinator={node_id=0,host=192.168.1.120,port=9092}}) for group ChatRoom
+INFO  2017-04-02 17:32:16,659 [ChatRoom] - Discovered coordinator 192.168.1.120:9092 (id: 2147483647 rack: null) for group ChatRoom.
+DEBUG 2017-04-02 17:32:16,659 [ChatRoom] - Initiating connection to node 2147483647 at 192.168.1.120:9092.
+DEBUG 2017-04-02 17:32:16,659 [kafka-producer-network-thread | producer-1] - Updated cluster metadata version 2 to Cluster(id = 2Jyz7hyPQzuyowWezK0xGQ, nodes = [192.168.1.120:9092 (id: 0 rack: null)], partitions = [Partition(topic = ChatRoom, partition = 0, leader = 0, replicas = [0], isr = [0])])
+DEBUG 2017-04-02 17:32:16,661 [kafka-coordinator-heartbeat-thread | ChatRoom] - Heartbeat thread for group ChatRoom started
+DEBUG 2017-04-02 17:32:16,661 [ChatRoom] - Sending synchronous auto-commit of offsets {} for group ChatRoom
+INFO  2017-04-02 17:32:16,661 [ChatRoom] - Revoking previously assigned partitions [] for group ChatRoom
+INFO  2017-04-02 17:32:16,661 [ChatRoom] - (Re-)joining group ChatRoom
+DEBUG 2017-04-02 17:32:16,663 [ChatRoom] - Sending JoinGroup ((type: JoinGroupRequest, groupId=ChatRoom, sessionTimeout=30000, rebalanceTimeout=300000, memberId=, protocolType=consumer, groupProtocols=org.apache.kafka.common.requests.JoinGroupRequest$ProtocolMetadata@4d1d6a53)) to coordinator 192.168.1.120:9092 (id: 2147483647 rack: null)
+DEBUG 2017-04-02 17:32:16,664 [ChatRoom] - Added sensor with name node-2147483647.bytes-sent
+DEBUG 2017-04-02 17:32:16,665 [ChatRoom] - Added sensor with name node-2147483647.bytes-received
+DEBUG 2017-04-02 17:32:16,665 [ChatRoom] - Added sensor with name node-2147483647.latency
+DEBUG 2017-04-02 17:32:16,665 [ChatRoom] - Created socket with SO_RCVBUF = 342972, SO_SNDBUF = 146988, SO_TIMEOUT = 0 to node 2147483647
+DEBUG 2017-04-02 17:32:16,665 [ChatRoom] - Completed connection to node 2147483647.  Fetching API versions.
+DEBUG 2017-04-02 17:32:16,665 [ChatRoom] - Initiating API versions fetch from node 2147483647.
+DEBUG 2017-04-02 17:32:16,667 [ChatRoom] - Recorded API versions for node 2147483647: (Produce(0): 0 to 2 [usable: 2], Fetch(1): 0 to 3 [usable: 3], Offsets(2): 0 to 1 [usable: 1], Metadata(3): 0 to 2 [usable: 2], LeaderAndIsr(4): 0 [usable: 0], StopReplica(5): 0 [usable: 0], UpdateMetadata(6): 0 to 3 [usable: 3], ControlledShutdown(7): 1 [usable: 1], OffsetCommit(8): 0 to 2 [usable: 2], OffsetFetch(9): 0 to 2 [usable: 2], GroupCoordinator(10): 0 [usable: 0], JoinGroup(11): 0 to 1 [usable: 1], Heartbeat(12): 0 [usable: 0], LeaveGroup(13): 0 [usable: 0], SyncGroup(14): 0 [usable: 0], DescribeGroups(15): 0 [usable: 0], ListGroups(16): 0 [usable: 0], SaslHandshake(17): 0 [usable: 0], ApiVersions(18): 0 [usable: 0], CreateTopics(19): 0 to 1 [usable: 1], DeleteTopics(20): 0 [usable: 0])
+DEBUG 2017-04-02 17:32:16,673 [ChatRoom] - Received successful JoinGroup response for group ChatRoom: {error_code=0,generation_id=32,group_protocol=range,leader_id=consumer-1-6868b3ca-77ef-456e-b254-40179a4d3074,member_id=consumer-1-6868b3ca-77ef-456e-b254-40179a4d3074,members=[{member_id=consumer-1-6868b3ca-77ef-456e-b254-40179a4d3074,member_metadata=java.nio.HeapByteBuffer[pos=0 lim=20 cap=20]}]}
+DEBUG 2017-04-02 17:32:16,673 [ChatRoom] - Performing assignment for group ChatRoom using strategy range with subscriptions {consumer-1-6868b3ca-77ef-456e-b254-40179a4d3074=Subscription(topics=[ChatRoom])}
+DEBUG 2017-04-02 17:32:16,674 [ChatRoom] - Finished assignment for group ChatRoom: {consumer-1-6868b3ca-77ef-456e-b254-40179a4d3074=Assignment(partitions=[ChatRoom-0])}
+DEBUG 2017-04-02 17:32:16,674 [ChatRoom] - Sending leader SyncGroup for group ChatRoom to coordinator 192.168.1.120:9092 (id: 2147483647 rack: null): (type=SyncGroupRequest, groupId=ChatRoom, generationId=32, memberId=consumer-1-6868b3ca-77ef-456e-b254-40179a4d3074, groupAssignment=consumer-1-6868b3ca-77ef-456e-b254-40179a4d3074)
+DEBUG 2017-04-02 17:32:16,675 [kafka-producer-network-thread | producer-1] - Initiating connection to node 0 at 192.168.1.120:9092.
+DEBUG 2017-04-02 17:32:16,676 [kafka-producer-network-thread | producer-1] - Added sensor with name node-0.bytes-sent
+DEBUG 2017-04-02 17:32:16,677 [kafka-producer-network-thread | producer-1] - Added sensor with name node-0.bytes-received
+DEBUG 2017-04-02 17:32:16,678 [kafka-producer-network-thread | producer-1] - Added sensor with name node-0.latency
+DEBUG 2017-04-02 17:32:16,678 [kafka-producer-network-thread | producer-1] - Created socket with SO_RCVBUF = 310308, SO_SNDBUF = 146988, SO_TIMEOUT = 0 to node 0
+DEBUG 2017-04-02 17:32:16,678 [kafka-producer-network-thread | producer-1] - Completed connection to node 0.  Fetching API versions.
+DEBUG 2017-04-02 17:32:16,678 [kafka-producer-network-thread | producer-1] - Initiating API versions fetch from node 0.
+INFO  2017-04-02 17:32:16,678 [ChatRoom] - Successfully joined group ChatRoom with generation 32
+DEBUG 2017-04-02 17:32:16,679 [kafka-producer-network-thread | producer-1] - Recorded API versions for node 0: (Produce(0): 0 to 2 [usable: 2], Fetch(1): 0 to 3 [usable: 3], Offsets(2): 0 to 1 [usable: 1], Metadata(3): 0 to 2 [usable: 2], LeaderAndIsr(4): 0 [usable: 0], StopReplica(5): 0 [usable: 0], UpdateMetadata(6): 0 to 3 [usable: 3], ControlledShutdown(7): 1 [usable: 1], OffsetCommit(8): 0 to 2 [usable: 2], OffsetFetch(9): 0 to 2 [usable: 2], GroupCoordinator(10): 0 [usable: 0], JoinGroup(11): 0 to 1 [usable: 1], Heartbeat(12): 0 [usable: 0], LeaveGroup(13): 0 [usable: 0], SyncGroup(14): 0 [usable: 0], DescribeGroups(15): 0 [usable: 0], ListGroups(16): 0 [usable: 0], SaslHandshake(17): 0 [usable: 0], ApiVersions(18): 0 [usable: 0], CreateTopics(19): 0 to 1 [usable: 1], DeleteTopics(20): 0 [usable: 0])
+DEBUG 2017-04-02 17:32:16,679 [kafka-producer-network-thread | producer-1] - Added sensor with name topic.ChatRoom.records-per-batch
+INFO  2017-04-02 17:32:16,679 [ChatRoom] - Setting newly assigned partitions [ChatRoom-0] for group ChatRoom
+DEBUG 2017-04-02 17:32:16,680 [kafka-producer-network-thread | producer-1] - Added sensor with name topic.ChatRoom.bytes
+DEBUG 2017-04-02 17:32:16,680 [kafka-producer-network-thread | producer-1] - Added sensor with name topic.ChatRoom.compression-rate
+DEBUG 2017-04-02 17:32:16,680 [kafka-producer-network-thread | producer-1] - Added sensor with name topic.ChatRoom.record-retries
+DEBUG 2017-04-02 17:32:16,680 [kafka-producer-network-thread | producer-1] - Added sensor with name topic.ChatRoom.record-errors
+DEBUG 2017-04-02 17:32:16,680 [ChatRoom] - Group ChatRoom fetching committed offsets for partitions: [ChatRoom-0]
+DEBUG 2017-04-02 17:32:16,684 [ChatRoom] - Resetting offset for partition ChatRoom-0 to the committed offset 15
+DEBUG 2017-04-02 17:32:16,687 [ChatRoom] - Sending fetch for partitions [ChatRoom-0] to broker 192.168.1.120:9092 (id: 0 rack: null)
+DEBUG 2017-04-02 17:32:16,687 [ChatRoom] - Initiating connection to node 0 at 192.168.1.120:9092.
+DEBUG 2017-04-02 17:32:16,688 [ChatRoom] - Added sensor with name node-0.bytes-sent
+DEBUG 2017-04-02 17:32:16,688 [ChatRoom] - Added sensor with name node-0.bytes-received
+DEBUG 2017-04-02 17:32:16,689 [ChatRoom] - Added sensor with name node-0.latency
+DEBUG 2017-04-02 17:32:16,689 [ChatRoom] - Created socket with SO_RCVBUF = 342972, SO_SNDBUF = 146988, SO_TIMEOUT = 0 to node 0
+DEBUG 2017-04-02 17:32:16,689 [ChatRoom] - Completed connection to node 0.  Fetching API versions.
+DEBUG 2017-04-02 17:32:16,689 [ChatRoom] - Initiating API versions fetch from node 0.
+DEBUG 2017-04-02 17:32:16,690 [ChatRoom] - Recorded API versions for node 0: (Produce(0): 0 to 2 [usable: 2], Fetch(1): 0 to 3 [usable: 3], Offsets(2): 0 to 1 [usable: 1], Metadata(3): 0 to 2 [usable: 2], LeaderAndIsr(4): 0 [usable: 0], StopReplica(5): 0 [usable: 0], UpdateMetadata(6): 0 to 3 [usable: 3], ControlledShutdown(7): 1 [usable: 1], OffsetCommit(8): 0 to 2 [usable: 2], OffsetFetch(9): 0 to 2 [usable: 2], GroupCoordinator(10): 0 [usable: 0], JoinGroup(11): 0 to 1 [usable: 1], Heartbeat(12): 0 [usable: 0], LeaveGroup(13): 0 [usable: 0], SyncGroup(14): 0 [usable: 0], DescribeGroups(15): 0 [usable: 0], ListGroups(16): 0 [usable: 0], SaslHandshake(17): 0 [usable: 0], ApiVersions(18): 0 [usable: 0], CreateTopics(19): 0 to 1 [usable: 1], DeleteTopics(20): 0 [usable: 0])
+DEBUG 2017-04-02 17:32:16,702 [ChatRoom] - Added sensor with name topic.ChatRoom.bytes-fetched
+DEBUG 2017-04-02 17:32:16,703 [ChatRoom] - Added sensor with name topic.ChatRoom.records-fetched
+DEBUG 2017-04-02 17:32:16,703 [ChatRoom] - Added sensor with name ChatRoom-0.records-lag
+DEBUG 2017-04-02 17:32:16,704 [ChatRoom] - Ignoring fetched records for ChatRoom-0 at offset 15 since the current position is 17
+DEBUG 2017-04-02 17:32:16,704 [ChatRoom] - Sending fetch for partitions [ChatRoom-0] to broker 192.168.1.120:9092 (id: 0 rack: null)
+DEBUG 2017-04-02 17:32:16,705 [ChatRoom] - ConsumerGet org.apache.kafka.clients.consumer.ConsumerRecords@49049b98
+DEBUG 2017-04-02 17:32:17,206 [ChatRoom] - Sending fetch for partitions [ChatRoom-0] to broker 192.168.1.120:9092 (id: 0 rack: null)
+DEBUG 2017-04-02 17:32:17,682 [ChatRoom] - Sending asynchronous auto-commit of offsets {ChatRoom-0=OffsetAndMetadata{offset=17, metadata=''}} for group ChatRoom
+DEBUG 2017-04-02 17:32:17,685 [ChatRoom] - Group ChatRoom committed offset 17 for partition ChatRoom-0
+DEBUG 2017-04-02 17:32:17,686 [ChatRoom] - Completed auto-commit of offsets {ChatRoom-0=OffsetAndMetadata{offset=17, metadata=''}} for group ChatRoom
+DEBUG 2017-04-02 17:32:17,708 [ChatRoom] - Sending fetch for partitions [ChatRoom-0] to broker 192.168.1.120:9092 (id: 0 rack: null)
+DEBUG 2017-04-02 17:32:18,211 [ChatRoom] - Sending fetch for partitions [ChatRoom-0] to broker 192.168.1.120:9092 (id: 0 rack: null)
+DEBUG 2017-04-02 17:32:18,683 [ChatRoom] - Sending asynchronous auto-commit of offsets {ChatRoom-0=OffsetAndMetadata{offset=17, metadata=''}} for group ChatRoom
+DEBUG 2017-04-02 17:32:18,685 [ChatRoom] - Group ChatRoom committed offset 17 for partition ChatRoom-0
+DEBUG 2017-04-02 17:32:18,685 [ChatRoom] - Completed auto-commit of offsets {ChatRoom-0=OffsetAndMetadata{offset=17, metadata=''}} for group ChatRoom
+DEBUG 2017-04-02 17:32:18,714 [ChatRoom] - Sending fetch for partitions [ChatRoom-0] to broker 192.168.1.120:9092 (id: 0 rack: null)
+DEBUG 2017-04-02 17:32:19,217 [ChatRoom] - Sending fetch for partitions [ChatRoom-0] to broker 192.168.1.120:9092 (id: 0 rack: null)
+DEBUG 2017-04-02 17:32:19,683 [ChatRoom] - Sending asynchronous auto-commit of offsets {ChatRoom-0=OffsetAndMetadata{offset=17, metadata=''}} for group ChatRoom
+DEBUG 2017-04-02 17:32:19,688 [ChatRoom] - Group ChatRoom committed offset 17 for partition ChatRoom-0
+DEBUG 2017-04-02 17:32:19,688 [ChatRoom] - Completed auto-commit of offsets {ChatRoom-0=OffsetAndMetadata{offset=17, metadata=''}} for group ChatRoom
+DEBUG 2017-04-02 17:32:19,710 [kafka-coordinator-heartbeat-thread | ChatRoom] - Sending Heartbeat request for group ChatRoom to coordinator 192.168.1.120:9092 (id: 2147483647 rack: null)
+DEBUG 2017-04-02 17:32:19,713 [ChatRoom] - Received successful Heartbeat response for group ChatRoom
+DEBUG 2017-04-02 17:32:19,722 [ChatRoom] - Sending fetch for partitions [ChatRoom-0] to broker 192.168.1.120:9092 (id: 0 rack: null)
+DEBUG 2017-04-02 17:32:20,223 [ChatRoom] - Sending fetch for partitions [ChatRoom-0] to broker 192.168.1.120:9092 (id: 0 rack: null)
+DEBUG 2017-04-02 17:32:20,687 [ChatRoom] - Sending asynchronous auto-commit of offsets {ChatRoom-0=OffsetAndMetadata{offset=17, metadata=''}} for group ChatRoom
+DEBUG 2017-04-02 17:32:20,688 [ChatRoom] - Group ChatRoom committed offset 17 for partition ChatRoom-0
+DEBUG 2017-04-02 17:32:20,688 [ChatRoom] - Completed auto-commit of offsets {ChatRoom-0=OffsetAndMetadata{offset=17, metadata=''}} for group ChatRoom
+DEBUG 2017-04-02 17:32:20,725 [ChatRoom] - Sending fetch for partitions [ChatRoom-0] to broker 192.168.1.120:9092 (id: 0 rack: null)
+DEBUG 2017-04-02 17:32:21,227 [ChatRoom] - Sending fetch for partitions [ChatRoom-0] to broker 192.168.1.120:9092 (id: 0 rack: null)
+DEBUG 2017-04-02 17:32:21,691 [ChatRoom] - Sending asynchronous auto-commit of offsets {ChatRoom-0=OffsetAndMetadata{offset=17, metadata=''}} for group ChatRoom
+DEBUG 2017-04-02 17:32:21,693 [ChatRoom] - Group ChatRoom committed offset 17 for partition ChatRoom-0
+DEBUG 2017-04-02 17:32:21,693 [ChatRoom] - Completed auto-commit of offsets {ChatRoom-0=OffsetAndMetadata{offset=17, metadata=''}} for group ChatRoom
+DEBUG 2017-04-02 17:32:21,729 [ChatRoom] - Sending fetch for partitions [ChatRoom-0] to broker 192.168.1.120:9092 (id: 0 rack: null)
+DEBUG 2017-04-02 17:32:22,232 [ChatRoom] - Sending fetch for partitions [ChatRoom-0] to broker 192.168.1.120:9092 (id: 0 rack: null)
+DEBUG 2017-04-02 17:32:22,693 [ChatRoom] - Sending asynchronous auto-commit of offsets {ChatRoom-0=OffsetAndMetadata{offset=17, metadata=''}} for group ChatRoom
+DEBUG 2017-04-02 17:32:22,695 [ChatRoom] - Group ChatRoom committed offset 17 for partition ChatRoom-0
+DEBUG 2017-04-02 17:32:22,695 [ChatRoom] - Completed auto-commit of offsets {ChatRoom-0=OffsetAndMetadata{offset=17, metadata=''}} for group ChatRoom
+DEBUG 2017-04-02 17:32:22,738 [ChatRoom] - Sending fetch for partitions [ChatRoom-0] to broker 192.168.1.120:9092 (id: 0 rack: null)
+DEBUG 2017-04-02 17:32:22,799 [kafka-coordinator-heartbeat-thread | ChatRoom] - Sending Heartbeat request for group ChatRoom to coordinator 192.168.1.120:9092 (id: 2147483647 rack: null)
+DEBUG 2017-04-02 17:32:22,800 [ChatRoom] - Received successful Heartbeat response for group ChatRoom
+DEBUG 2017-04-02 17:32:23,241 [ChatRoom] - Sending fetch for partitions [ChatRoom-0] to broker 192.168.1.120:9092 (id: 0 rack: null)
+DEBUG 2017-04-02 17:32:23,696 [ChatRoom] - Sending asynchronous auto-commit of offsets {ChatRoom-0=OffsetAndMetadata{offset=17, metadata=''}} for group ChatRoom
+DEBUG 2017-04-02 17:32:23,698 [ChatRoom] - Group ChatRoom committed offset 17 for partition ChatRoom-0
+DEBUG 2017-04-02 17:32:23,698 [ChatRoom] - Completed auto-commit of offsets {ChatRoom-0=OffsetAndMetadata{offset=17, metadata=''}} for group ChatRoom
+DEBUG 2017-04-02 17:32:23,742 [ChatRoom] - Sending fetch for partitions [ChatRoom-0] to broker 192.168.1.120:9092 (id: 0 rack: null)
+DEBUG 2017-04-02 17:32:24,244 [ChatRoom] - Sending fetch for partitions [ChatRoom-0] to broker 192.168.1.120:9092 (id: 0 rack: null)

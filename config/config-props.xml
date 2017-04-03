@@ -1,0 +1,18 @@
+<?xml version="1.0" ?>
+<!-- KafkaBackside core properties.
+	These will eventually include host and port values
+	and other properties as required by various apps
+	-->
+
+<properties>
+
+	<parameter name="Demo" value="demo" />
+
+	
+
+	<list name="DemoList">
+		<parameter name="Something" value="SomeValue" /> 
+	</list>
+
+</properties>
+
