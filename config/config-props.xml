@@ -6,8 +6,16 @@
 
 <properties>
 
-	<parameter name="Demo" value="demo" />
+	<parameter name="ChatProducerTopic" value="chatout" />
+	<parameter name="ChatConsumerTopic" value="chatin" />
 
+	<parameter name="ElizaProducerTopic" value="elizaout" />
+	<parameter name="ElizaConsumerTopic" value="elizain" />
+	
+	
+	<parameter name="KAFKA_SERVER_URL" value="localhost" />
+
+	<parameter name="KAFKA_SERVER_PORT" value="9092" />
 	
 
 	<list name="DemoList">
