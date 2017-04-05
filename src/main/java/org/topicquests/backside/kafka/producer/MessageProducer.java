@@ -24,6 +24,7 @@ import org.apache.kafka.clients.producer.ProducerRecord;
 import org.topicquests.backside.kafka.KafkaBacksideEnvironment;
 import org.topicquests.backside.kafka.apps.api.IClosable;
 
+
 /**
  * @author jackpark
  * Modeled after a Kafka example
@@ -36,20 +37,30 @@ public class MessageProducer extends Thread implements IClosable {
     private boolean isAsync;
     private final String topic;
     private List<String>messages;
+    private List<Integer>partitions;
 
 	/**
 	 * @param e
 	 * @param topic
+	 * @param clientId TODO
 	 * @param isAsynchronous // ignored for now
 	 */
-	public MessageProducer(KafkaBacksideEnvironment e, String topic, boolean isAsynchronous) {
+	public MessageProducer(KafkaBacksideEnvironment e, String topic, String clientId, boolean isAsynchronous) {
 		super(topic);
 		environment = e;
 		this.topic = topic;
 		isAsync = isAsynchronous;
 		Properties props = new Properties();
-		//TODO make bootstrap.servers a config value
-		props.put("bootstrap.servers", "localhost:9092");
+		String url = "localhost";
+		String port = "9092";
+		if (environment != null && environment.getStringProperty("KAFKA_SERVER_URL") != null) {
+			url = environment.getStringProperty("KAFKA_SERVER_URL");
+			port = environment.getStringProperty("KAFKA_SERVER_PORT");
+		}
+		props.put("bootstrap.servers", url+":"+port);
+		props.put("request.required.acks", "1");
+//		props.put("partitioner.class", "org.apache.kafka.clients.producer.internals.DefaultPartitioner");
+		props.put("client.id", clientId);
 		props.put("key.serializer", 
 		         "org.apache.kafka.common.serialization.StringSerializer");
 		props.put("value.serializer", 
@@ -58,16 +69,20 @@ public class MessageProducer extends Thread implements IClosable {
 		// but this survived FirstTest
 		producer = new KafkaProducer<String, String>(props);
 		messages = new ArrayList<String>();
+		partitions = new ArrayList<Integer>();
+		this.start();
 	}
 
-	public void sendMessage(String message) {
+	public void sendMessage(String message, Integer partition) {
 		synchronized(messages) {
 			messages.add(message);
+			partitions.add(partition);
 			messages.notify();
 		}
 	}
 	public void run() {
 		String msg = null;
+		Integer p = null;
 		while (isRunning) {
 			synchronized(messages) {
 				if (messages.isEmpty()) {
@@ -76,37 +91,44 @@ public class MessageProducer extends Thread implements IClosable {
 					} catch (Exception e) {}
 				} else {
 					msg = messages.remove(0);
+					p = partitions.remove(0);
 				}
 			}
 			if (msg != null) {
-				_sendMessage(msg);
+				_sendMessage(msg, p);
 				msg = null;
+				p = null;
 			}
 		}
 	}
 	
-	void _sendMessage(String msg) {
+	void _sendMessage(String msg, Integer partition) {
 		ProducerRecord<String, String> pr = 
-				new ProducerRecord<String, String>(topic, topic, msg);
+				new ProducerRecord<String, String>(topic, partition, System.currentTimeMillis(), topic, msg);
 		//TODO deal with asynch FutureCallback
-		environment.logDebug("ProducerSend "+pr);
+		System.out.println("ProducerSend "+pr);
+		if (environment != null)
+			environment.logDebug("ProducerSend "+pr);
 		if (isAsync) {
 			try {
 				producer.send(pr).get();
 			} catch (Exception e) {
-				environment.logError(e.getMessage(), e);
+				if (environment != null)
+					environment.logError(e.getMessage(), e);
 				e.printStackTrace();
 			}			
 		} else {
 			try {
 				producer.send(pr).get();
 			} catch (Exception e) {
-				environment.logError(e.getMessage(), e);
+				if (environment != null)
+					environment.logError(e.getMessage(), e);
 				e.printStackTrace();				
 			}
 		}
 	}
 
+	
 	/* (non-Javadoc)
 	 * @see org.topicquests.backside.kafka.apps.api.IClosable#close()
 	 */

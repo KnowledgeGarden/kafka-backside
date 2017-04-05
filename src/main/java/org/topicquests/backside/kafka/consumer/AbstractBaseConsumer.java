@@ -22,34 +22,42 @@ import org.apache.kafka.clients.consumer.ConsumerRecords;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
 import org.topicquests.backside.kafka.KafkaBacksideEnvironment;
 import org.topicquests.backside.kafka.apps.api.IClosable;
-import org.topicquests.backside.kafka.consumer.api.IMessageConsumerListener;
 
+import kafka.consumer.ConsumerConfig;
+import kafka.consumer.ConsumerConnector;
+import kafka.consumer.KafkaStream;
 import kafka.utils.ShutdownableThread;
 
 /**
  * @author jackpark
- * Modeled after a Kafka example
- * @see https://www.tutorialspoint.com/apache_kafka/apache_kafka_simple_producer_example.htm
+ *
  */
-public class MessageConsumer extends ShutdownableThread implements IClosable {
+public abstract class AbstractBaseConsumer extends ShutdownableThread implements IClosable {
 	private KafkaBacksideEnvironment environment;
+	//private final ConsumerConnector xconsumer;
     private final KafkaConsumer<String, String> consumer;
-    private IMessageConsumerListener listener;
     private boolean isRunning = true;
-
 	/**
-	 * @param e
-	 * @param topoic
-	 * @param l
+	 * 
 	 */
-	public MessageConsumer(KafkaBacksideEnvironment e, String topic, IMessageConsumerListener l) {
+	public AbstractBaseConsumer(KafkaBacksideEnvironment e, String groupId, String topic) {
 		super(topic, false);
 		environment = e;
-		listener = l;
+		String gid = groupId;
+		if (groupId == null)
+			gid = topic;
+		//xconsumer = kafka.consumer.Consumer.create(createConsumerConfig(topic));
 		Properties props = new Properties();
-		//TODO make a config value
-		props.put("bootstrap.servers", "localhost:9092");
-		props.put("group.id", topic); //TODO not sure about that
+		String url = "localhost";
+		String port = "9092";
+		if (environment != null && environment.getStringProperty("KAFKA_SERVER_URL") != null) {
+			url = environment.getStringProperty("KAFKA_SERVER_URL");
+			port = environment.getStringProperty("KAFKA_SERVER_PORT");
+		}
+		props.put("bootstrap.servers", url+":"+port);
+		props.put("group.id", gid); //TODO not sure about that
+		//testing auto.offset.reset -- does nothing to solve groupconsumer
+		//props.put("auto.offset.reset", "latest");//latest, earliest, none
 		props.put("key.deserializer", 
 		         "org.apache.kafka.common.serialization.StringDeserializer");
 		props.put("value.deserializer", 
@@ -63,32 +71,54 @@ public class MessageConsumer extends ShutdownableThread implements IClosable {
 	    consumer.subscribe(Arrays.asList(topic));
 	    this.start();
 	}
+	private static ConsumerConfig createConsumerConfig(String topic) {
+		Properties props = new Properties();
+		props.put("zookeeper.connect", "localhost:2181");
+		props.put("group.id", topic+Long.toString(System.currentTimeMillis()));
+		props.put("zookeeper.session.timeout.ms", "400");
+		props.put("zookeeper.sync.time.ms", "200");
+		props.put("auto.commit.interval.ms", "1000");
+
+		return new ConsumerConfig(props);
+
+}
 
 	/* (non-Javadoc)
 	 * @see org.topicquests.backside.kafka.apps.api.IClosable#close()
 	 */
 	@Override
 	public void close() {
+		System.out.println("AbstractBaseConsumer.closing");
 		isRunning = false;
 		synchronized(consumer) {
 			consumer.close();
 		}
 	}
-
+	
+	/**
+	 * Extension class must implement this to do whatever it wants
+	 * with the <code>records</code>
+	 * @param records
+	 */
+	public abstract void handleRecords(ConsumerRecords<String, String> records);
+	
 	/* (non-Javadoc)
 	 * @see kafka.utils.ShutdownableThread#doWork()
 	 */
 	@Override
 	public void doWork() {
+		KafkaStream x;
 		ConsumerRecords<String, String> records = null;
 		while (isRunning) {
 			synchronized(consumer) {
-				records = consumer.poll(1000);
+	          records = consumer.poll(1000);
 			}
-	        if (records != null && records.count() > 0) {
-	        	 environment.logDebug("ConsumerGet "+records);
-	        	 listener.acceptRecords(records);
-	        }
+	         if (records != null && records.count() > 0) {
+	 			System.out.println("AbstractBaseConsumer "+records);
+	 			if (environment != null)
+	 				environment.logDebug("ConsumerGet "+records);
+	        	handleRecords(records);
+	         }
 		}
 	}
 

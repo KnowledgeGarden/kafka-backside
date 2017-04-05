@@ -18,7 +18,10 @@ package org.topicquests.backside.kafka;
 import java.util.Map;
 
 import org.nex.config.ConfigPullParser;
+import org.topicquests.backside.kafka.apps.chat.ChatApp;
+import org.topicquests.backside.kafka.apps.chat.ChatUI;
 import org.topicquests.backside.kafka.apps.chat.SimpleChatApp;
+import org.topicquests.backside.kafka.apps.eliza.ElizaApp;
 import org.topicquests.util.LoggingPlatform;
 import org.topicquests.util.Tracer;
 
@@ -29,7 +32,15 @@ import org.topicquests.util.Tracer;
 public class KafkaBacksideEnvironment {
 	private LoggingPlatform log = LoggingPlatform.getInstance("logger.properties");
 	private Map<String,Object>properties;
+	/**
+	 * SimpleChatApp is for debugging
+	 */
 	private SimpleChatApp chatApp;
+	/**
+	 * ChatApp is a real app
+	 */
+	private ChatApp	mainChatApp;
+	private ElizaApp elizaApp;
 
 	/**
 	 * 
@@ -37,12 +48,23 @@ public class KafkaBacksideEnvironment {
 	public KafkaBacksideEnvironment() {
 		ConfigPullParser p = new ConfigPullParser("config-props.xml");
 		properties = p.getProperties();
-		chatApp = new SimpleChatApp(this);
+		//chatApp = new SimpleChatApp(this);
+		mainChatApp = new ChatApp(this);
+		elizaApp = new ElizaApp(this);
 		//TODO
 		
+		
+		//instance = this;
+		
 		System.out.println("Booted");
+		Runtime.getRuntime().addShutdownHook(new Thread() {
+		    public void run() { shutDown(); }
+		});
 	}
 
+	//public static KafkaBacksideEnvironment getInstance() {
+	//	return instance;
+	//}
 	
 	public SimpleChatApp getChatApp() {
 		return chatApp;
@@ -50,6 +72,14 @@ public class KafkaBacksideEnvironment {
 	//////////////////////
 	// Utilities
 	//////////////////////
+	
+	public String getStringProperty(String key) {
+		return (String)properties.get(key);
+	}
+	
+	public Map<String, Object> getProperties() {
+		return properties;
+	}
 	
 	public void logDebug(String msg) {
 		log.logDebug(msg);
@@ -66,7 +96,9 @@ public class KafkaBacksideEnvironment {
 	
 	
 	public void shutDown() {
-		chatApp.close();
+		System.out.println("Shutting Down");
+	//	chatApp.close();
+		mainChatApp.close();
 		//TODO
 	}
 
@@ -74,7 +106,8 @@ public class KafkaBacksideEnvironment {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		new KafkaBacksideEnvironment();
+		KafkaBacksideEnvironment env = new KafkaBacksideEnvironment();
+		
 	}
 
 }
