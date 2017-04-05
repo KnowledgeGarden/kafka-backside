@@ -23,9 +23,6 @@ import org.apache.kafka.clients.consumer.KafkaConsumer;
 import org.topicquests.backside.kafka.KafkaBacksideEnvironment;
 import org.topicquests.backside.kafka.apps.api.IClosable;
 
-import kafka.consumer.ConsumerConfig;
-import kafka.consumer.ConsumerConnector;
-import kafka.consumer.KafkaStream;
 import kafka.utils.ShutdownableThread;
 
 /**
@@ -34,9 +31,9 @@ import kafka.utils.ShutdownableThread;
  */
 public abstract class AbstractBaseConsumer extends ShutdownableThread implements IClosable {
 	private KafkaBacksideEnvironment environment;
-	//private final ConsumerConnector xconsumer;
     private final KafkaConsumer<String, String> consumer;
     private boolean isRunning = true;
+    
 	/**
 	 * 
 	 */
@@ -46,7 +43,6 @@ public abstract class AbstractBaseConsumer extends ShutdownableThread implements
 		String gid = groupId;
 		if (groupId == null)
 			gid = topic;
-		//xconsumer = kafka.consumer.Consumer.create(createConsumerConfig(topic));
 		Properties props = new Properties();
 		String url = "localhost";
 		String port = "9092";
@@ -56,8 +52,6 @@ public abstract class AbstractBaseConsumer extends ShutdownableThread implements
 		}
 		props.put("bootstrap.servers", url+":"+port);
 		props.put("group.id", gid); //TODO not sure about that
-		//testing auto.offset.reset -- does nothing to solve groupconsumer
-		//props.put("auto.offset.reset", "latest");//latest, earliest, none
 		props.put("key.deserializer", 
 		         "org.apache.kafka.common.serialization.StringDeserializer");
 		props.put("value.deserializer", 
@@ -71,17 +65,6 @@ public abstract class AbstractBaseConsumer extends ShutdownableThread implements
 	    consumer.subscribe(Arrays.asList(topic));
 	    this.start();
 	}
-	private static ConsumerConfig createConsumerConfig(String topic) {
-		Properties props = new Properties();
-		props.put("zookeeper.connect", "localhost:2181");
-		props.put("group.id", topic+Long.toString(System.currentTimeMillis()));
-		props.put("zookeeper.session.timeout.ms", "400");
-		props.put("zookeeper.sync.time.ms", "200");
-		props.put("auto.commit.interval.ms", "1000");
-
-		return new ConsumerConfig(props);
-
-}
 
 	/* (non-Javadoc)
 	 * @see org.topicquests.backside.kafka.apps.api.IClosable#close()
@@ -107,7 +90,6 @@ public abstract class AbstractBaseConsumer extends ShutdownableThread implements
 	 */
 	@Override
 	public void doWork() {
-		KafkaStream x;
 		ConsumerRecords<String, String> records = null;
 		while (isRunning) {
 			synchronized(consumer) {
