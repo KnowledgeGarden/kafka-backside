@@ -22,11 +22,11 @@
 
 	<parameter name="KAFKA_SERVER_PORT" value="9092" />
 	
-	<!-- here for reference 
-	<list name="DemoList">
-		<parameter name="Something" value="SomeValue" /> 
+	
+	<list name="PlugInConnectors">
+		<parameter name="ElasticSearch" value="org.topicquests.backside.kafka.connector.es.ElasticSearchConnector" /> 
 	</list>
-	-->
+	
 
 </properties>
 

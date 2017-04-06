@@ -15,13 +15,13 @@
  */
 package org.topicquests.backside.kafka;
 
-import java.util.Map;
+import java.util.*;
 
 import org.nex.config.ConfigPullParser;
 import org.topicquests.backside.kafka.apps.chat.ChatApp;
-import org.topicquests.backside.kafka.apps.chat.ChatUI;
 import org.topicquests.backside.kafka.apps.chat.SimpleChatApp;
 import org.topicquests.backside.kafka.apps.eliza.ElizaApp;
+import org.topicquests.backside.kafka.connector.api.IPluginConnector;
 import org.topicquests.util.LoggingPlatform;
 import org.topicquests.util.Tracer;
 
@@ -31,9 +31,12 @@ import org.topicquests.util.Tracer;
  */
 public class KafkaBacksideEnvironment {
 	private LoggingPlatform log = LoggingPlatform.getInstance("logger.properties");
-	private Map<String,Object>properties;
+	private Map<String, Object>properties;
+	private Map<String, IPluginConnector> connectors;
+	
 	/**
 	 * SimpleChatApp is for debugging
+	 * @deprecated
 	 */
 	private SimpleChatApp chatApp;
 	/**
@@ -48,24 +51,52 @@ public class KafkaBacksideEnvironment {
 	public KafkaBacksideEnvironment() {
 		ConfigPullParser p = new ConfigPullParser("config-props.xml");
 		properties = p.getProperties();
+		connectors = new HashMap<String, IPluginConnector>();
 		//chatApp = new SimpleChatApp(this);
 		mainChatApp = new ChatApp(this);
 		elizaApp = new ElizaApp(this);
-		//TODO
-		
-		
-		//instance = this;
-		
+		bootPlugins();
+		//TODO other stuff?
 		System.out.println("Booted");
+		//Register a shutdown hook so ^c will properly close things
 		Runtime.getRuntime().addShutdownHook(new Thread() {
 		    public void run() { shutDown(); }
 		});
 	}
 
-	//public static KafkaBacksideEnvironment getInstance() {
-	//	return instance;
-	//}
+	public void registerPluginConnector(IPluginConnector c) {
+		System.out.println("RegisteringPlugin "+c.getPluginName());
+		connectors.put(c.getPluginName(), c);
+	}
+	/**
+	 * Use the plugins list config property to boot plugins
+	 */
+	void bootPlugins() {
+		List<List<String>>vals = (List<List<String>>)properties.get("PlugInConnectors");
+		if (vals != null && vals.size() > 0) {
+			String name, path;
+			IPluginConnector pc;
+			List<String>cntr;
+			Iterator<List<String>>itr = vals.iterator();
+			while (itr.hasNext()) {
+				cntr = itr.next();
+				name = cntr.get(0);
+				path = cntr.get(1);
+				try {
+					pc = (IPluginConnector)Class.forName(path).newInstance();
+					pc.init(this, name);
+				} catch (Exception e) {
+					logError(e.getMessage(), e);
+					e.printStackTrace();
+				}
+			}
+		}
+	}
 	
+	/**
+	 * @deprecated
+	 * @return
+	 */
 	public SimpleChatApp getChatApp() {
 		return chatApp;
 	}
@@ -99,15 +130,21 @@ public class KafkaBacksideEnvironment {
 		System.out.println("Shutting Down");
 	//	chatApp.close();
 		mainChatApp.close();
-		//TODO
+		elizaApp.close();
+		//TODO others?
+		//plugins
+		if (connectors.size() > 0) {
+			Iterator<String>itr = connectors.keySet().iterator();
+			while (itr.hasNext())
+				connectors.get(itr.next()).close();
+		}
 	}
 
 	/**
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		KafkaBacksideEnvironment env = new KafkaBacksideEnvironment();
-		
+		new KafkaBacksideEnvironment();
 	}
 
 }
