@@ -6,21 +6,27 @@
 
 <properties>
 
+	<!-- App Topics -->
+	<!--  	These apply strictly to to apps embedded in
+		KafkaBackside.
+		Clients outside use the opposite values -->
 	<parameter name="ChatProducerTopic" value="chatout" />
 	<parameter name="ChatConsumerTopic" value="chatin" />
 
 	<parameter name="ElizaProducerTopic" value="elizaout" />
 	<parameter name="ElizaConsumerTopic" value="elizain" />
 	
+	<!-- /App Topics -->
 	
 	<parameter name="KAFKA_SERVER_URL" value="localhost" />
 
 	<parameter name="KAFKA_SERVER_PORT" value="9092" />
 	
-
+	<!-- here for reference 
 	<list name="DemoList">
 		<parameter name="Something" value="SomeValue" /> 
 	</list>
+	-->
 
 </properties>
 
