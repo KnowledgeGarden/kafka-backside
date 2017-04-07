@@ -21,6 +21,7 @@ public abstract class AbstractBaseConnector implements IPluginConnector {
 	public void init(KafkaBacksideEnvironment environment, String pluginName) {
 		this.environment = environment;
 		name = pluginName;
+		initialize();
 		environment.registerPluginConnector(this);
 	}
 	
@@ -37,5 +38,10 @@ public abstract class AbstractBaseConnector implements IPluginConnector {
 	 */
 	@Override
 	public abstract void close();
+	
+	/**
+	 * Allow extension to do its own initializations
+	 */
+	public abstract void initialize();
 
 }
