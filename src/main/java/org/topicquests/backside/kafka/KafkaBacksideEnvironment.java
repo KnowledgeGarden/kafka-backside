@@ -49,7 +49,7 @@ public class KafkaBacksideEnvironment {
 	 * 
 	 */
 	public KafkaBacksideEnvironment() {
-		ConfigPullParser p = new ConfigPullParser("config-props.xml");
+		ConfigPullParser p = new ConfigPullParser("kafka-props.xml");
 		properties = p.getProperties();
 		connectors = new HashMap<String, IPluginConnector>();
 		//chatApp = new SimpleChatApp(this);
