@@ -26,7 +26,7 @@ public class KafkaTestFramework {
 	 */
 	public static void main(String[] args) {
 		System.out.println("STARTING TESTS");
-		//new FirstTest(); //no longer a valid test
+		new FirstTest();
 		System.out.println("TESTS DID");
 	}
 

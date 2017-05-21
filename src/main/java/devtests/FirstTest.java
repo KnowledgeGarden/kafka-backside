@@ -40,7 +40,4 @@ public class FirstTest {
 		//environment.shutDown();
 	}
 
-	public static void main(String[] args) {
-		new FirstTest();
-	}
 }

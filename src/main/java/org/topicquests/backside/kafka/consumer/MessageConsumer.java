@@ -61,7 +61,6 @@ public class MessageConsumer extends ShutdownableThread implements IClosable {
 		consumer = new KafkaConsumer<String, String>(props);
 		//Kafka Consumer subscribes list of topics here.
 	    consumer.subscribe(Arrays.asList(topic));
-	    this.start();
 	}
 
 	/* (non-Javadoc)
@@ -70,9 +69,7 @@ public class MessageConsumer extends ShutdownableThread implements IClosable {
 	@Override
 	public void close() {
 		isRunning = false;
-		synchronized(consumer) {
-			consumer.close();
-		}
+		consumer.close();
 	}
 
 	/* (non-Javadoc)
@@ -80,15 +77,12 @@ public class MessageConsumer extends ShutdownableThread implements IClosable {
 	 */
 	@Override
 	public void doWork() {
-		ConsumerRecords<String, String> records = null;
 		while (isRunning) {
-			synchronized(consumer) {
-				records = consumer.poll(1000);
-			}
-	        if (records != null && records.count() > 0) {
+	         ConsumerRecords<String, String> records = consumer.poll(100);
+	         if (records.count() > 0) {
 	        	 environment.logDebug("ConsumerGet "+records);
 	        	 listener.acceptRecords(records);
-	        }
+	         }
 		}
 	}
 
