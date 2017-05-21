@@ -1,0 +1,1 @@
+java -jar target\kafka-backside-0.1.0-SNAPSHOT-jar-with-dependencies.jar

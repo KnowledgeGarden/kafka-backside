@@ -41,15 +41,13 @@ public class SimpleChatApp extends AbstractKafkaApp
 	public SimpleChatApp(KafkaBacksideEnvironment env) {
 		super(env);
 		name = "ChatRoom"; //TODO make into a config value
-		producer = new MessageProducer(environment, name, false);
+		producer = new MessageProducer(environment, name, "SimpleChatApp", false);
 		consumer = new MessageConsumer(environment, name, this);
-		producer.start();
-		consumer.start();
 	}
 
 	public void sendMessage(String msg) {
 		environment.logDebug("ChatAppSendMessage "+msg);
-		producer.sendMessage(msg);
+		producer.sendMessage(msg, new Integer(0));
 	}
 
 	@Override
