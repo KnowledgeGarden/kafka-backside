@@ -32,8 +32,8 @@ public class FirstTest {
 	 */
 	public FirstTest() {
 		environment = new KafkaBacksideEnvironment();
-		SimpleChatApp app = environment.getChatApp();
-		app.sendMessage("Testing");
+		//SimpleChatApp app = environment.getChatApp();
+		//app.sendMessage("Testing");
 		//This will have the app printout a message it receives
 		//We cannot shut down because the app is threaded and it
 		// will be shut down before anything can happen

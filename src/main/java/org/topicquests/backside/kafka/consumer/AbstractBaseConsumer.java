@@ -38,7 +38,8 @@ public abstract class AbstractBaseConsumer extends ShutdownableThread implements
 	 * 
 	 */
 	public AbstractBaseConsumer(KafkaBacksideEnvironment e, String groupId, String topic) {
-		super(topic, false);
+ 		super(topic, false);
+        System.out.println("ABC "+topic);
 		environment = e;
 		String gid = groupId;
 		if (groupId == null)
@@ -59,7 +60,7 @@ public abstract class AbstractBaseConsumer extends ShutdownableThread implements
 		props.put("enable.auto.commit", "true");
 		props.put("auto.commit.interval.ms", "1000");
 	    props.put("session.timeout.ms", "30000");
-	    //TODO there may be other key/values but these survived FirstText
+ 	    //TODO there may be other key/values but these survived FirstText
 		consumer = new KafkaConsumer<String, String>(props);
 		//Kafka Consumer subscribes list of topics here.
 	    consumer.subscribe(Arrays.asList(topic));
@@ -71,9 +72,9 @@ public abstract class AbstractBaseConsumer extends ShutdownableThread implements
 	 */
 	@Override
 	public void close() {
-		System.out.println("AbstractBaseConsumer.closing");
 		isRunning = false;
 		synchronized(consumer) {
+            System.out.println("AbstractBaseConsumer.closing");
 			consumer.close();
 		}
 	}
@@ -92,14 +93,16 @@ public abstract class AbstractBaseConsumer extends ShutdownableThread implements
 	public void doWork() {
 		ConsumerRecords<String, String> records = null;
 		while (isRunning) {
+            //System.out.println("FFF "+records);
 			synchronized(consumer) {
-	          records = consumer.poll(1000);
+	          records = consumer.poll(10);
 			}
 	         if (records != null && records.count() > 0) {
 	 			System.out.println("AbstractBaseConsumer "+records);
 	 			if (environment != null)
 	 				environment.logDebug("ConsumerGet "+records);
 	        	handleRecords(records);
+                 records = null;
 	         }
 		}
 	}

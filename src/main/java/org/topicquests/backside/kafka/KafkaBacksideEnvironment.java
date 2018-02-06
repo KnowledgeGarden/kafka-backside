@@ -38,12 +38,12 @@ public class KafkaBacksideEnvironment {
 	 * SimpleChatApp is for debugging
 	 * @deprecated
 	 */
-	private SimpleChatApp chatApp;
+	//private SimpleChatApp chatApp;
 	/**
 	 * ChatApp is a real app
 	 */
-	private ChatApp	mainChatApp;
-	private ElizaApp elizaApp;
+	//private ChatApp	mainChatApp;
+	//private ElizaApp elizaApp;
 
 	/**
 	 * 
@@ -53,8 +53,8 @@ public class KafkaBacksideEnvironment {
 		properties = p.getProperties();
 		connectors = new HashMap<String, IPluginConnector>();
 		//chatApp = new SimpleChatApp(this);
-		mainChatApp = new ChatApp(this);
-		elizaApp = new ElizaApp(this);
+		//mainChatApp = new ChatApp(this);
+		//elizaApp = new ElizaApp(this);
 		bootPlugins();
 		//TODO other stuff?
 		System.out.println("Booted");
@@ -97,9 +97,9 @@ public class KafkaBacksideEnvironment {
 	 * @deprecated
 	 * @return
 	 */
-	public SimpleChatApp getChatApp() {
-		return chatApp;
-	}
+	//public SimpleChatApp getChatApp() {
+	//	return chatApp;
+	//}
 	//////////////////////
 	// Utilities
 	//////////////////////
@@ -129,8 +129,8 @@ public class KafkaBacksideEnvironment {
 	public void shutDown() {
 		System.out.println("Shutting Down");
 	//	chatApp.close();
-		mainChatApp.close();
-		elizaApp.close();
+	//	mainChatApp.close();
+	////	elizaApp.close();
 		//TODO others?
 		//plugins
 		if (connectors.size() > 0) {
